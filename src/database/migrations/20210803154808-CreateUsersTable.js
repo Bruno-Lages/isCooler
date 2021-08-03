@@ -19,7 +19,7 @@ module.exports = {
                     type: Sequelize.STRING,
                 },
 
-                photoURL: {
+                photo: {
                     type: Sequelize.STRING
                 },
 

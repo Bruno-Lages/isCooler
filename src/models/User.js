@@ -20,6 +20,7 @@ module.exports = class User extends Model {
 
             name: {
                 type: DataTypes.STRING,
+                allowNull: true,
                 defaultValue: null,
                 validate: {
                     len: {
@@ -29,8 +30,10 @@ module.exports = class User extends Model {
                 }
             },
 
-            photoURL: {
+            photo: {
                 type: DataTypes.STRING,
+                defaultValue: null,
+                allowNull: true,
                 validate: {
                     isUrl: {
                         args: true,
