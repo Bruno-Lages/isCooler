@@ -1,0 +1,43 @@
+const { Model, DataTypes } = require('sequelize');
+
+module.exports = class User extends Model {
+    static init(dbconnection){
+        super.init({
+            id: {
+                type: DataTypes.STRING,
+                primaryKey: true,
+            },
+
+            email: {
+                type: DataTypes.STRING,
+                validate: {
+                    isEmail: {
+                        args: true,
+                        msg: 'Invalid Email'
+                    }
+                }
+            },
+
+            name: {
+                type: DataTypes.STRING,
+                defaultValue: null,
+                validate: {
+                    len: {
+                        args: [3,50],
+                        msg: 'The length name must be between 3 and 50 characters'
+                    }
+                }
+            },
+
+            photoURL: {
+                type: DataTypes.STRING,
+                validate: {
+                    isUrl: {
+                        args: true,
+                        msg: 'Not an URL'
+                    }
+                }
+            },
+        }, {sequelize: dbconnection, tableName: 'users'})
+    }
+}
