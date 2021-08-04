@@ -4,7 +4,9 @@ const dbconfig = require('./dbconfig');
 const dbconnection = new Sequelize(dbconfig);
 
 const User = require('./../models/User');
+const Room = require('./../models/Room');
 
-const models = [User];
+const models = [User, Room];
 
 models.forEach((model) => model.init(dbconnection));
+models.forEach((model) => model.associate && model.associate(dbconnection.models));
