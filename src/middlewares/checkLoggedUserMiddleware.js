@@ -8,7 +8,9 @@ function checkLoggedUserMiddleware(request, response, next) {
     if (!token) throw new Error('invalid token');
 
     const validToken = jwt.verify(token, process.env.JWT_SECRET);
-    request.user.id = validToken.sub;
+    console.log(validToken.sub);
+    request.userId = validToken.sub;
+    console.log(request.userId);
 
     next();
 }
