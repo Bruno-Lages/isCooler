@@ -18,6 +18,11 @@ const ShowRoomModulesController = require('./controllers/ShowRoomModulesControll
 const UpdateModuleController = require('./controllers/UpdateModuleController');
 const DeleteModuleController = require('./controllers/DeleteModuleController');
 
+const CreateVideoController = require('./controllers/CreateVideoController');
+const ShowVideoController = require('./controllers/ShowVideoController');
+const UpdateVideoController = require('./controllers/UpdateVideoController');
+const DeleteVideoController = require('./controllers/DeleteVideoController');
+
 Router.post('/users/create', CreateUserController.handle);
 Router.post('/users/login', CreateTokenController.handle);
 Router.get('/users/:id', ShowUserController.handle);
@@ -33,5 +38,10 @@ Router.post('/modules/create', checkLoggedUserMiddleware, CreateModuleController
 Router.get('/modules/:id', ShowRoomModulesController.handle);
 Router.put('/modules/update/:id', checkLoggedUserMiddleware, UpdateModuleController.handle);
 Router.delete('/modules/delete/:id', checkLoggedUserMiddleware, DeleteModuleController.handle);
+
+Router.post('/videos/create', checkLoggedUserMiddleware, CreateVideoController.handle);
+Router.get('/videos/:id', checkLoggedUserMiddleware, ShowVideoController.handle)
+Router.put('/videos/update/:id', checkLoggedUserMiddleware, UpdateVideoController.handle);
+Router.delete('/videos/delete/:id', checkLoggedUserMiddleware, DeleteVideoController.handle);
 
 module.exports = Router;

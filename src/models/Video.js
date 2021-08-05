@@ -1,7 +1,7 @@
-const { Sequelize, Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, Sequelize } = require('sequelize');
 const { v4 } = require('uuid');
 
-class Module extends Model {
+class Video extends Model {
     static init(dbconnection) {
         super.init({
             id: {
@@ -16,18 +16,24 @@ class Module extends Model {
                 allowNull: false,
             },
 
+            url: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                validate: {
+                    isUrl: true
+                },
+            },
+
             order: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
-        },
-        { sequelize: dbconnection, tableName: 'modules'})
+        }, { sequelize: dbconnection, tableName: 'videos' })
     }
 
     static associate(models) {
-        this.belongsTo(models.Room, {foreignKey: 'room', as: 'roomData'});
-        this.hasMany(models.Video, { foreignKey: 'module', as: 'videos' });
+        this.belongsTo(models.Module, { foreignKey: 'module', as: 'moduleData' });
     }
 }
 
-module.exports= Module;
+module.exports = Video;
