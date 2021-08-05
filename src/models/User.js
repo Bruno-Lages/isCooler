@@ -44,7 +44,7 @@ module.exports = class User extends Model {
         }, {sequelize: dbconnection, tableName: 'users'})
     }
 
-    static assossiate(models) {
+    static associate(models) {
         this.hasMany(models.Room, { foreignKey: 'admin' });
     }
 }
