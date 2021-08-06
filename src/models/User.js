@@ -46,5 +46,6 @@ module.exports = class User extends Model {
 
     static associate(models) {
         this.hasMany(models.Room, { foreignKey: 'admin' });
+        this.belongsToMany(models.Room, { through: 'subscriptions', foreignKey: 'user', as: 'subscription' })
     }
 }

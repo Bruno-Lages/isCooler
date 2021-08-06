@@ -23,6 +23,10 @@ const ShowVideoController = require('./controllers/ShowVideoController');
 const UpdateVideoController = require('./controllers/UpdateVideoController');
 const DeleteVideoController = require('./controllers/DeleteVideoController');
 
+const CreateSubscriptionController = require('./controllers/CreateSubscriptionController');
+const ShowSubscriptionsController = require('./controllers/ShowSubscriptionsController');
+const DeleteSubscriptionController = require('./controllers/DeleteSubscriptionController');
+
 Router.post('/users/create', CreateUserController.handle);
 Router.post('/users/login', CreateTokenController.handle);
 Router.get('/users/:id', ShowUserController.handle);
@@ -43,5 +47,9 @@ Router.post('/videos/create', checkLoggedUserMiddleware, CreateVideoController.h
 Router.get('/videos/:id', checkLoggedUserMiddleware, ShowVideoController.handle)
 Router.put('/videos/update/:id', checkLoggedUserMiddleware, UpdateVideoController.handle);
 Router.delete('/videos/delete/:id', checkLoggedUserMiddleware, DeleteVideoController.handle);
+
+Router.post('/subscriptions/create', checkLoggedUserMiddleware, CreateSubscriptionController.handle);
+Router.get('/subscriptions/show/:id', ShowSubscriptionsController.handle);
+Router.delete('/subscriptions/delete', checkLoggedUserMiddleware, DeleteSubscriptionController.handle);
 
 module.exports = Router;

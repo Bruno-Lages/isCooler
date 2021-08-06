@@ -26,6 +26,7 @@ class Room extends Model {
     static associate(models) {
         this.belongsTo(models.User, { foreignKey: 'admin', as: 'adminId' });
         this.hasMany(models.Module, {foreignKey: 'room', as: 'modulesData'});
+        this.belongsToMany(models.User, { through: 'subscriptions', foreignKey: 'room', as: 'subscribeds' });
     }
 }
 
