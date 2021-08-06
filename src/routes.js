@@ -9,6 +9,7 @@ const DeleteUserController = require('./controllers/DeleteUserController');
 const ShowUserController = require('./controllers/ShowUserController');
 
 const CreateRoomController = require('./controllers/CreateRoomController');
+const IndexRoomsController = require('./controllers/IndexRoomsControllers');
 const ShowRoomController = require('./controllers/ShowRoomController');
 const UpdateRoomController = require('./controllers/UpdateRoomController');
 const DeleteRoomController = require('./controllers/DeleteRoomController');
@@ -19,6 +20,7 @@ const UpdateModuleController = require('./controllers/UpdateModuleController');
 const DeleteModuleController = require('./controllers/DeleteModuleController');
 
 const CreateVideoController = require('./controllers/CreateVideoController');
+const IndexVideosController = require('./controllers/IndexVideosController');
 const ShowVideoController = require('./controllers/ShowVideoController');
 const UpdateVideoController = require('./controllers/UpdateVideoController');
 const DeleteVideoController = require('./controllers/DeleteVideoController');
@@ -34,6 +36,7 @@ Router.put('/users/update/:id', checkLoggedUserMiddleware, UpdateUserController.
 Router.delete('/users/delete/:id', checkLoggedUserMiddleware, DeleteUserController.handle);
 
 Router.post('/rooms/create', checkLoggedUserMiddleware, CreateRoomController.handle);
+Router.get('/rooms', IndexRoomsController.handle);
 Router.get('/rooms/:id', ShowRoomController.handle);
 Router.put('/rooms/update/:id', checkLoggedUserMiddleware, UpdateRoomController.handle);
 Router.delete('/rooms/delete/:id', checkLoggedUserMiddleware, DeleteRoomController.handle);
@@ -44,7 +47,8 @@ Router.put('/modules/update/:id', checkLoggedUserMiddleware, UpdateModuleControl
 Router.delete('/modules/delete/:id', checkLoggedUserMiddleware, DeleteModuleController.handle);
 
 Router.post('/videos/create', checkLoggedUserMiddleware, CreateVideoController.handle);
-Router.get('/videos/:id', checkLoggedUserMiddleware, ShowVideoController.handle)
+Router.get('/videos/index/:id', IndexVideosController.handle);
+Router.get('/videos/:id', checkLoggedUserMiddleware, ShowVideoController.handle);
 Router.put('/videos/update/:id', checkLoggedUserMiddleware, UpdateVideoController.handle);
 Router.delete('/videos/delete/:id', checkLoggedUserMiddleware, DeleteVideoController.handle);
 
