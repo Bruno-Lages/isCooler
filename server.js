@@ -1,11 +1,13 @@
-const { response } = require('express');
 const Express = require('express');
+const cors = require('cors')
 require('express-async-errors');
 
 require('./src/database');
 
 const routes = require('./src/routes');
 const app = Express();
+
+app.use(cors())
 
 app.use(Express.json());
 app.use(routes);
@@ -16,4 +18,4 @@ app.use((err, request, response) => {
     })
 });
 
-app.listen(80, () => console.log('oi'));
+app.listen(process.env.PORT || 80, () => console.log('oi'));

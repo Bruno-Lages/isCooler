@@ -1,11 +1,13 @@
 {
-  "name": "isCooler",
+  "name": "iscooler",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./server.js"
+    "dev": "nodemon ./server.js",
+    "build": "sequelize db:migrate",
+    "start": "npm ./server.js"
   },
   "repository": {
     "type": "git",
@@ -19,11 +21,14 @@
   },
   "homepage": "https://github.com/Bruno-Lages/isCooler#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.2.5",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
     "sequelize": "^6.6.5",
     "uuid": "^8.3.2"
   },
