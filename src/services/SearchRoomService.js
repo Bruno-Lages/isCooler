@@ -10,7 +10,7 @@ class SearchRoomService {
             const room = await Room.findAll({
                 where: {
                     admin: {
-                        [ Op.like ]: `${admin}%`
+                        [ Op.like ]: `${value}%`
                     },
                 }
             });
