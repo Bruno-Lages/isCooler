@@ -1,5 +1,8 @@
 const Router = require('express').Router();
 
+const multer = require('multer');
+const upload = multer({ storage: multer.memoryStorage() });
+
 const checkLoggedUserMiddleware = require('./middlewares/checkLoggedUserMiddleware');
 
 const CreateUserController = require('./controllers/createUserController');
@@ -29,6 +32,7 @@ const DeleteVideoController = require('./controllers/DeleteVideoController');
 const CreateSubscriptionController = require('./controllers/CreateSubscriptionController');
 const ShowSubscriptionsController = require('./controllers/ShowSubscriptionsController');
 const DeleteSubscriptionController = require('./controllers/DeleteSubscriptionController');
+const UploadCloudinaryVideoController = require('./controllers/UploadCloudinaryVideoController');
 
 Router.post('/users/create', CreateUserController.handle);
 Router.post('/users/login', CreateTokenController.handle);
@@ -48,6 +52,7 @@ Router.get('/modules/:id', ShowRoomModulesController.handle);
 Router.put('/modules/update/:id', checkLoggedUserMiddleware, UpdateModuleController.handle);
 Router.delete('/modules/delete/:id', checkLoggedUserMiddleware, DeleteModuleController.handle);
 
+Router.post('/videos/cloudinary-upload', upload.single('video'), UploadCloudinaryVideoController.handle);
 Router.post('/videos/create', checkLoggedUserMiddleware, CreateVideoController.handle);
 Router.get('/videos/index/:id', IndexVideosController.handle);
 Router.get('/videos/:id', checkLoggedUserMiddleware, ShowVideoController.handle);
@@ -57,5 +62,6 @@ Router.delete('/videos/delete/:id', checkLoggedUserMiddleware, DeleteVideoContro
 Router.post('/subscriptions/create', checkLoggedUserMiddleware, CreateSubscriptionController.handle);
 Router.get('/subscriptions/show/:id', ShowSubscriptionsController.handle);
 Router.delete('/subscriptions/delete', checkLoggedUserMiddleware, DeleteSubscriptionController.handle);
+
 
 module.exports = Router;
