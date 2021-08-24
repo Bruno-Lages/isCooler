@@ -12,7 +12,7 @@ app.use(cors())
 app.use(Express.json());
 app.use(routes);
 
-app.use((err, request, response) => {
+app.use((err, request, response, next) => {
     if (err instanceof Error) return response.status(400).json({
         error: err.message
     })

@@ -41,6 +41,25 @@ module.exports = class User extends Model {
                     }
                 }
             },
+
+            cloudinary: {
+                type: DataTypes.STRING,
+                allowNull: true,
+                defaultValue: null,
+            },
+
+            key: {
+                type: DataTypes.STRING,
+                allowNull: true,
+                defaultValue: null,
+            },
+
+            secret: {
+                type: DataTypes.STRING,
+                allowNull: true,
+                defaultValue: null,
+            },
+
         }, {sequelize: dbconnection, tableName: 'users'})
     }
 
