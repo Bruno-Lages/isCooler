@@ -30,7 +30,7 @@ class CreateVideoService{
         const cloudInfo = await User.findByPk(userId);
         const cloudName = cloudInfo.cloudinary;
 
-        if (!key || !secret || cloudName) throw new Error('missing cloudinary credentials');
+        if (!key || !secret || !cloudName) throw new Error('missing cloudinary credentials');
 
         cloudinary.config({
             cloud_name: cloudName,
