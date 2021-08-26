@@ -2,7 +2,14 @@ const Room = require('./../models/Room');
 
 class ShowRoomController {
     async execute(id) {
-        const room = Room.findByPk(id);
+        const room = Room.findByPk(id, {
+            include: {
+                association: 'modulesData',
+                include: {
+                    association: 'videos',
+                }
+            }
+        });
 
         if (!room) throw new Error('inexistent room');
 
