@@ -1,8 +1,10 @@
 const User = require('./../models/User');
 
 class ShowUserService {
-    async execute(id) {
-        const user = await User.findByPk(id);
+    async execute(userId) {
+        const user = await User.findByPk(userId, {
+            attributes: { exclude: ['secret', 'key']}
+        });
 
         if(!user) throw new Error('inexistent user');
         

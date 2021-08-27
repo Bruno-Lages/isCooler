@@ -8,7 +8,8 @@ class ShowSubscriptionsService {
             },
             include: {
                 association: 'subscribeds',
-            }
+                attributes: { exclude: ['secret', 'key']}
+            },
         });
         if (!room) throw new Error('inexistent room');
 
