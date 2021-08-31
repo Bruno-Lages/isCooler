@@ -33,6 +33,7 @@ class Video extends Model {
 
     static associate(models) {
         this.belongsTo(models.Module, { foreignKey: 'module', as: 'moduleData' });
+        this.belongsToMany(models.User, { through: 'views', foreignKey: 'video', as: 'viewers' })
     }
 }
 
