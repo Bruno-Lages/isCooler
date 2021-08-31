@@ -2,7 +2,7 @@ const ShowRoomService = require('./../services/ShowRoomService');
 
 class ShowRoomController {
     async handle(request, response) {
-        const room = await ShowRoomService.execute(request.params.id);
+        const room = await ShowRoomService.execute(request.params.id, request.body);
         return response.json(room);
     }
 }
