@@ -12,7 +12,7 @@ class CreateViewService {
         });
         if (!user) throw new Error('inexistent user');
 
-        const viewAlreadyExists = user.watched.filter((view) => view.id === videoId);
+        // const viewAlreadyExists = user.watched.filter((view) => view.id === videoId);
         // if (viewAlreadyExists) throw new Error('already saw this video');
         
         const video = await Video.findByPk(videoId);

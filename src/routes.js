@@ -35,6 +35,7 @@ const DeleteSubscriptionController = require('./controllers/DeleteSubscriptionCo
 
 const CreateViewController = require('./controllers/createViewController');
 const ShowViewsController = require('./controllers/ShowViewController');
+const ShowWatchedVideosController = require('./controllers/ShowWatchedVideosController');
 
 Router.post('/users/create', CreateUserController.handle);
 Router.post('/users/login', CreateTokenController.handle);
@@ -66,5 +67,6 @@ Router.delete('/subscriptions/delete', checkLoggedUserMiddleware, DeleteSubscrip
 
 Router.post('/views/create', checkLoggedUserMiddleware, CreateViewController.handle);
 Router.post('/views', checkLoggedUserMiddleware, ShowViewsController.handle);
+Router.get('/views/watched/:id', checkLoggedUserMiddleware, ShowWatchedVideosController.handle);
 
 module.exports = Router;
