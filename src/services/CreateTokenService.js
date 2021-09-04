@@ -11,7 +11,8 @@ class CreateTokenService {
         const user = await User.findByPk(id);
         if (!user) throw new Error('id inexistent');
 
-        const token = jwt.sign({email}, process.env.JWT_SECRET, { subject: user.id})
+        const token = jwt.sign({email}, process.env.JWT_SECRET, { subject: user.id,
+        expiresIn: '24h'})
 
         return token
 
