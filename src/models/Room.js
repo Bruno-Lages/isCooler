@@ -27,7 +27,7 @@ class Room extends Model {
 
                 },
                 unique: true,
-                allowNull: false,
+                allowNull: true,
                 defaultValue: Math.random().toString(36).slice(2),
             }
 
