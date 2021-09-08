@@ -20,6 +20,17 @@ class Room extends Model {
                 type: DataTypes.STRING,
             },
 
+            code: {
+                type: DataTypes.STRING,
+                validate: {
+                    isAlphanumeric: true,
+
+                },
+                unique: true,
+                allowNull: false,
+                defaultValue: Math.random().toString(36).slice(2),
+            }
+
         }, { sequelize: dbconnection, tableName: 'rooms' })
     }
 

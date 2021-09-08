@@ -71,7 +71,7 @@ Router.delete('/subscriptions/delete', checkLoggedUserMiddleware, DeleteSubscrip
 
 Router.post('/views/create', checkLoggedUserMiddleware, CreateViewController.handle);
 Router.post('/views', checkLoggedUserMiddleware, ShowViewsController.handle);
-Router.get('/views/watched/:id', checkLoggedUserMiddleware, ShowWatchedVideosController.handle);
+Router.get('/views/watched/:code', checkLoggedUserMiddleware, ShowWatchedVideosController.handle);
 
 
 module.exports = Router;

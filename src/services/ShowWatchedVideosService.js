@@ -1,11 +1,14 @@
 const Room = require('./../models/Room');
 
 class ShowWatchedVideosService {
-    async execute(id, user) {
+    async execute(code, user) {
 
         if (!user || !id) throw new Error('missing data');
 
-        const watchedVideos = await Room.findByPk(id, {
+        const watchedVideos = await Room.findOne({
+            where: {
+                code
+            },
             include: {
                 association: 'modulesData',
                 include: {

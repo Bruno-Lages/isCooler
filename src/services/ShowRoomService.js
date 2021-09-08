@@ -1,8 +1,11 @@
 const Room = require('./../models/Room');
 
 class ShowRoomController {
-    async execute(id) {
-        const room = await Room.findByPk(id, {
+    async execute(code) {
+        const room = await Room.findOne( {
+            where: {
+                code
+            },
             include: [{
                 association: 'adminId',
                 attributes: ['cloudinary'],
