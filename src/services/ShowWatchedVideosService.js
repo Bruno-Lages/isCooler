@@ -3,7 +3,7 @@ const Room = require('./../models/Room');
 class ShowWatchedVideosService {
     async execute(code, user) {
 
-        if (!user || !id) throw new Error('missing data');
+        if (!user || !code) throw new Error('missing data');
 
         const watchedVideos = await Room.findOne({
             where: {
