@@ -29,6 +29,14 @@ class Room extends Model {
                 unique: true,
                 allowNull: true,
                 defaultValue: Math.random().toString(36).slice(2),
+            },
+
+            cover: {
+                type: DataTypes.STRING,
+                validate: {
+                    isUrl: true,
+                },
+                allowNull: true,
             }
 
         }, { sequelize: dbconnection, tableName: 'rooms' })
