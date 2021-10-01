@@ -16,7 +16,7 @@ function dataParser(file) {
 
 
 class CreateVideoService{
-    async execute(userId, video, { name, module }) {
+    async execute(userId, video, { name, module, description }) {
         if (!name || !video || !module) throw new Error('missing data');
 
         const moduleExists = await Module.findByPk(module, { include: [
@@ -43,19 +43,20 @@ class CreateVideoService{
         const data = await cloudinary.uploader.upload(dataParser(video), {
             resource_type: 'video',
             quality: 'auto',
+            format: 'mp4',
         }, (error, result) => {
             if (error) console.log(result, error);
         });
         console.log('done');
-        const { url, secure_url, bytes } = data;
+        const { secure_url, duration } = data;
         
         const previousVideos = moduleExists.videos.sort((a, b) => b.order - a.order);
         
         const order = previousVideos.length > 0 ? previousVideos[0].order + 1000 : 1000;
         
-        await Video.create({name, url: secure_url, module, order});
+        await Video.create({name, url: secure_url, module, order, duration, description});
         
-        return { name, module, order };
+        return { name, module, order, duration };
 
     }
 }

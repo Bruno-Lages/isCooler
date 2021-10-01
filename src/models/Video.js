@@ -28,6 +28,16 @@ class Video extends Model {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
+
+            description: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
+
+            duration: {
+                type: DataTypes.REAL,
+                allowNull: false,
+            }
         }, { sequelize: dbconnection, tableName: 'videos' })
     }
 
