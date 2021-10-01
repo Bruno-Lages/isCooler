@@ -14,7 +14,7 @@ class DeleteViewService {
 
         const viewExists = user.watched.filter((view) => view.id === videoId);
         if (!viewExists) throw new Error('Video not watched before');
-        
+
         const video = await Video.findByPk(videoId);
         if (!video) throw new Error('inexistent video');
 
@@ -24,4 +24,4 @@ class DeleteViewService {
     }
 }
 
-module.exports = new DeleteViewService;
+module.exports = new DeleteViewService; 

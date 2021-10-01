@@ -7,4 +7,4 @@ class DeleteViewController {
     }
 }
 
-module.exports = new DeleteViewController;
+module.exports = new DeleteViewController; 
