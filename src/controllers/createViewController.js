@@ -1,4 +1,4 @@
-const CreateViewService = require('../services/CreateViewService');
+const CreateViewService = require('./../services/CreateViewService');
 
 class CreateViewController {
     async handle(request, response) {
