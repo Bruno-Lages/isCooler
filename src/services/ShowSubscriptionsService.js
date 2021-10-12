@@ -1,10 +1,10 @@
 const Room = require("../models/Room");
 
 class ShowSubscriptionsService {
-    async execute(id) {
+    async execute(code) {
         const room = await Room.findOne({
             where: {
-                id
+                code
             },
             include: {
                 association: 'subscribeds',

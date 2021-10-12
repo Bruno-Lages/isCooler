@@ -8,7 +8,7 @@ const ShowSubscriptionsController = require('./../controllers/ShowSubscriptionsC
 const DeleteSubscriptionController = require('./../controllers/DeleteSubscriptionController');
 
 Router.post('/subscriptions/create', checkLoggedUserMiddleware, CreateSubscriptionController.handle);
-Router.get('/subscriptions/show/:id', ShowSubscriptionsController.handle);
+Router.get('/subscriptions/show/:code', ShowSubscriptionsController.handle);
 Router.get('/subscriptions/index', checkLoggedUserMiddleware, IndexSubscriptionsController.handle);
 Router.delete('/subscriptions/delete', checkLoggedUserMiddleware, DeleteSubscriptionController.handle);
 
