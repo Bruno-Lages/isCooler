@@ -26,14 +26,7 @@ class Module extends Model {
                 allowNull: true,
             }
         },
-        { 
-            sequelize: dbconnection, 
-            tableName: 'modules',
-            hooks: {
-                beforeCreate: (room) => {
-                    room.modules_order = JSON.parse(room.modules_order);
-                }
-            }})
+        { sequelize: dbconnection, tableName: 'modules'})
     }
 
     static associate(models) {
