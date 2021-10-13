@@ -20,11 +20,6 @@ class Module extends Model {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
-
-            videos_order: {
-                type: DataTypes.ARRAY(DataTypes.INTEGER),
-                allowNull: true,
-            }
         },
         { sequelize: dbconnection, tableName: 'modules'})
     }

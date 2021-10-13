@@ -37,21 +37,9 @@ class Room extends Model {
                     isUrl: true,
                 },
                 allowNull: true,
-            },
-
-            modules_order: {
-                type: DataTypes.ARRAY(DataTypes.INTEGER),
-                allowNull: true,
             }
 
-        }, { 
-            sequelize: dbconnection, 
-            tableName: 'rooms', 
-            hooks: {
-                beforeCreate: (room) => {
-                    room.modules_order = JSON.parse(room.modules_order);
-                }
-            }})
+        }, { sequelize: dbconnection, tableName: 'rooms' })
     }
 
     static associate(models) {
