@@ -37,6 +37,11 @@ class Room extends Model {
                     isUrl: true,
                 },
                 allowNull: true,
+            },
+
+            modules_order: {
+                type: DataTypes.STRING,
+                allowNull: true,
             }
 
         }, { sequelize: dbconnection, tableName: 'rooms' })
