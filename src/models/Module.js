@@ -21,7 +21,7 @@ class Module extends Model {
                 allowNull: false,
             },
 
-            videosOrder: {
+            videos_order: {
                 type: DataTypes.ARRAY(DataTypes.INTEGER),
                 allowNull: true,
             }

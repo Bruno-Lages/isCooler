@@ -39,7 +39,7 @@ class Room extends Model {
                 allowNull: true,
             },
 
-            modulesOrder: {
+            modules_order: {
                 type: DataTypes.ARRAY(DataTypes.INTEGER),
                 allowNull: true,
             }
