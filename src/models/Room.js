@@ -37,6 +37,11 @@ class Room extends Model {
                     isUrl: true,
                 },
                 allowNull: true,
+            },
+
+            modulesOrder: {
+                type: DataTypes.ARRAY(DataTypes.INTEGER),
+                allowNull: true,
             }
 
         }, { sequelize: dbconnection, tableName: 'rooms' })
